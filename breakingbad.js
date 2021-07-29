@@ -39,6 +39,33 @@ app.get("/bettercallsaul", function(req,res){
     .then(response => response.json())
     .then(data => res.send(data));
 });
+var database = [];
+app.get("/delete", function(req,res){
+
+
+Character.find({}, function(err, characters){
+      if(!err){
+        database = characters;
+      }
+      else {
+        console.log(err);
+      }
+    });
+    // res.write("Successfully Deleted Character!"); //(another method to show the database in JSON format)
+    // res.write(JSON.stringify(database));
+    // res.send();
+    res.send(database);
+
+});
+
+app.post("/delete", function(req,res) {
+  const id = req.body.idToDelete;
+  Character.deleteOne({_id: id}, function(err){
+    if (!err) {
+      res.redirect("/delete");
+    }
+  });
+});
 app.post("/", function(req,res){
   const newCharacter = new Character({
     _id: req.body.id,
@@ -53,7 +80,7 @@ app.post("/", function(req,res){
     category: req.body.category
 
   });
-  console.log(newCharacter);
+
   newCharacter.save(function(err){
     if(!err){
       res.redirect("/");
