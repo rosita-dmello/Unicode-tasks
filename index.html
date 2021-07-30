@@ -104,7 +104,7 @@
           <input type="text" class="form-control" name="show">
         </div>
         </div>
-  <button type="submit" class="btn btn-primary" name="button">Submit</button>
+  <button type="submit" class="btn btn-primary" name="button">Add to Database!</button>
   </form>
 </div>
 <div class="py-5 text-center container">
@@ -116,7 +116,31 @@
         <input type="text" class="form-control" name="idToDelete">
       </div>
       </div>
-      <button type="submit" class="btn btn-primary" name="button">Submit</button>
+      <button type="submit" class="btn btn-primary" name="button">Delete Character</button>
+  </form>
+</div>
+<div class="py-5 text-center container">
+  <h2 style="margin-bottom: 50px">Update a character from Database!</h2>
+  <form class="" action="/update" method="post">
+    <div class="row mb-3">
+      <label class="col-sm-2 col-form-label" >Enter ID of the character</label>
+      <div class="col-sm-2">
+        <input type="text" class="form-control" name="idToUpdate">
+      </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-sm-2 col-form-label" >Enter attribute to be updated</label>
+        <div class="col-sm-2">
+          <input type="text" class="form-control" name="attributeToUpdate">
+        </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" >Enter the value to be updated</label>
+          <div class="col-sm-2">
+            <input type="text" class="form-control" name="valueToUpdate">
+          </div>
+          </div>
+      <button type="submit" class="btn btn-primary" name="button">Update Character!</button>
   </form>
 </div>
 

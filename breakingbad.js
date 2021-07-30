@@ -29,18 +29,32 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.get("/", function(req,res){
   res.sendFile(__dirname + "/index.html");
 });
-app.get("/breakingbad", function(req,res){
-  fetch("https://breakingbadapi.com/api/characters?category=Breaking+Bad")
-    .then(response => response.json())
-    .then(data => res.send(data));
+app.get("/breakingbad", async function(req,res){
+  try {
+  const response = await fetch("https://breakingbadapi.com/api/characters?category=Breaking+Bad");
+  const data = await response.json();
+  res.send(data);
+  }
+  catch(error) {
+    console.log(error);
+  }
+console.log(req.statusCode);
 });
-app.get("/bettercallsaul", function(req,res){
-  fetch("https://breakingbadapi.com/api/characters?category=Better+Call+Saul")
-    .then(response => response.json())
-    .then(data => res.send(data));
+
+app.get("/bettercallsaul", async function(req,res){
+  try {
+  const response = await fetch("https://breakingbadapi.com/api/characters?category=Better+Call+Saul");
+  const data = await response.json();
+  res.send(data);
+  console.log(req.statusCode);
+  }
+  catch(error) {
+    console.log(error);
+  }
+
 });
 var database = [];
-app.get("/delete", function(req,res){
+app.get("/database", function(req,res){
 
 
 Character.find({}, function(err, characters){
@@ -55,14 +69,29 @@ Character.find({}, function(err, characters){
     // res.write(JSON.stringify(database));
     // res.send();
     res.send(database);
-
 });
 
 app.post("/delete", function(req,res) {
   const id = req.body.idToDelete;
   Character.deleteOne({_id: id}, function(err){
     if (!err) {
-      res.redirect("/delete");
+      res.redirect("/database");
+    }
+    else {
+      console.log(err);
+    }
+  });
+});
+app.post("/update", function(req,res) {
+  const id = req.body.idToUpdate;
+  const attr = req.body.attributeToUpdate;
+  const value = req.body.valueToUpdate;
+  Character.updateOne({_id: id},{attr: value},function(err){
+    if (!err) {
+      res.redirect("/database");
+    }
+    else {
+      console.log(err);
     }
   });
 });
