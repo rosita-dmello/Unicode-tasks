@@ -107,6 +107,7 @@
   <button type="submit" class="btn btn-primary" name="button">Add to Database!</button>
   </form>
 </div>
+
 <div class="py-5 text-center container">
   <h2 style="margin-bottom: 50px">Delete a character from Database!</h2>
   <form class="" action="/delete" method="post">
@@ -119,13 +120,14 @@
       <button type="submit" class="btn btn-primary" name="button">Delete Character</button>
   </form>
 </div>
+
 <div class="py-5 text-center container">
   <h2 style="margin-bottom: 50px">Update a character from Database!</h2>
   <form class="" action="/update" method="post">
     <div class="row mb-3">
-      <label class="col-sm-2 col-form-label" >Enter ID of the character</label>
+      <label class="col-sm-2 col-form-label" >Enter name of the character</label>
       <div class="col-sm-2">
-        <input type="text" class="form-control" name="idToUpdate">
+        <input type="text" class="form-control" name="nameToUpdate">
       </div>
       </div>
       <div class="row mb-3">
@@ -143,8 +145,6 @@
       <button type="submit" class="btn btn-primary" name="button">Update Character!</button>
   </form>
 </div>
-
-
 
 </body>
 

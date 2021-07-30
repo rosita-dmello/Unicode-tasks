@@ -38,3 +38,27 @@ for (var k = 0; k < uniqueWords.length; k++) {
 
 }
 console.log(result);
+
+var newArray = bigArray;
+// BONUS Part
+for(var i = 0; i < newArray.length; i++){
+for(var j = 0; j < ( newArray.length - i -1 ); j++){
+
+  if(newArray[1][j] < newArray[1][j+1]){
+
+    var temp = newArray[0][j]
+    newArray[0][j] = newArray[0][j+1]
+    newArray[0][j+1] = temp
+  }
+}
+}
+
+// Print the sorted array
+var descending = "";
+for (var k = 0; k < newArray.length; k++) {
+  descending += newArray[k][0] + ",";
+
+}
+console.log("Descending order of occurences: " + descending);
+console.log("Most repeated: " + newArray[0][0]);
+console.log("Least repeated: " + newArray[newArray.length-1][0]);
